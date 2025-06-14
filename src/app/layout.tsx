@@ -2,6 +2,7 @@ import type React from "react"
 import "@/app/globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "next-themes"
+import AppContextProvider from "@/context/AppContext"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+        <AppContextProvider>
+          <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </AppContextProvider>
       </body>
     </html>
   )

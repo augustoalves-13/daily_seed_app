@@ -1,16 +1,16 @@
 "use client"
 
-import { useState } from "react"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+// import { useState } from "react"
+// import { Moon, Sun } from "lucide-react"
+// import { useTheme } from "next-themes"
 
 export function ThemeToggle() {
-  const { setTheme } = useTheme()
-  const [isOpen, setIsOpen] = useState(false)
+  // const { setTheme } = useTheme()
+  // const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="theme-toggle">
-      <button
+      {/* <button
         className="btn btn-icon"
         onClick={() => setIsOpen(!isOpen)}
         style={{ border: "1px solid var(--border-color)" }}
@@ -63,7 +63,7 @@ export function ThemeToggle() {
             Sistema
           </div>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

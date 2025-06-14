@@ -1,34 +1,13 @@
-import { Heart, Calendar } from "lucide-react"
+'use client'
 
-// Dados simulados de versículos anteriores
-const previousVerses = [
-  {
-    date: "07/06/2025",
-    text: "Não temas, porque eu sou contigo; não te assombres, porque eu sou o teu Deus; eu te fortaleço, e te ajudo, e te sustento com a minha destra fiel.",
-    reference: "Isaías 41:10",
-    isFavorite: true,
-  },
-  {
-    date: "06/06/2025",
-    text: "Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.",
-    reference: "Provérbios 3:5",
-    isFavorite: false,
-  },
-  {
-    date: "05/06/2025",
-    text: "Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei.",
-    reference: "Mateus 11:28",
-    isFavorite: true,
-  },
-  {
-    date: "04/06/2025",
-    text: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.",
-    reference: "1 Coríntios 13:4",
-    isFavorite: false,
-  },
-]
+import { AppContext } from "@/context/AppContext"
+import dayjs from "dayjs"
+import { Calendar } from "lucide-react"
+import { useContext } from "react"
 
 export function VerseHistory() {
+  const {history} = useContext(AppContext)
+
   return (
     <div className="card">
       <div className="card-header">
@@ -58,12 +37,12 @@ export function VerseHistory() {
       </div>
       <div className="card-content">
         <div className="verse-history">
-          {previousVerses.map((verse, index) => (
+          {history.map((verse, index) => (
             <div key={index} className="verse-history-item">
               <div className="verse-history-header">
                 <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
                   <span className="verse-history-reference">{verse.reference}</span>
-                  {verse.isFavorite && <Heart size={16} className="favorited" fill="#ef4444" />}
+                  {/* {verse.isFavorite && <Heart size={16} className="favorited" fill="#ef4444" />} */}
                 </div>
                 <span className="verse-history-date">
                   <div
@@ -74,7 +53,7 @@ export function VerseHistory() {
                       borderRadius: "50%",
                     }}
                   ></div>
-                  {verse.date}
+                  {dayjs(verse.date).format('DD/MM/YYYY')}
                 </span>
               </div>
               <p className="verse-history-text">{verse.text}</p>
